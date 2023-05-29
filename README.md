@@ -29,35 +29,36 @@
          Ex:- az login
 
 9. create a resource group 
-       az group create --name <group_name> --location eastus
+       
+    az group create --name <group_name> --location eastus
            Ex:-  az group create --name ctsegroup --location eastus
 
 10. Azure registry create 
-        az acr create --resource-group <group_name> --name <registry_name> --sku Basic --admin-enabled true
-
+        
+    az acr create --resource-group <group_name> --name <registry_name> --sku Basic --admin-enabled true
         Ex:-  az acr create --resource-group ctsegroup --name ctseregistery --sku Basic --admin-enabled true
 
 11. Get container registries list
-         az acr list --resource-group <group_name> --query "[].{acrLoginServer:loginServer}" --output table
-
+        
+    az acr list --resource-group <group_name> --query "[].{acrLoginServer:loginServer}" --output table
          Ex:- az acr list --resource-group ctsegroup --query “[].{acrLoginServer:loginServer}" --output table
 
 12. Type Docker images 
 
 13. Duplicate repository with registry name
-         docker tag <repo_name>:<tag> <registry_login_link>/<repo_name>:<tag>
-  
+       
+    docker tag <repo_name>:<tag> <registry_login_link>/<repo_name>:<tag>
          Ex:- docker tag ctse-web:v1 ctseregistery.azurecr.io/ctse-web:v1
 
 14. Login to Azure registry 
-         docker login <login_link>
-
+       
+      docker login <login_link>
           Ex:- docker login ctseregistery.azurecr.io
 
 15. Enter your username and password
 16. Push docker file to registry
-          docker push <duplicated_image_name>:<tag>
-
+         
+    docker push <duplicated_image_name>:<tag>
           Ex:- docker push ctseregistery.azurecr.io/ctse-web:v1
 
 17. After host
